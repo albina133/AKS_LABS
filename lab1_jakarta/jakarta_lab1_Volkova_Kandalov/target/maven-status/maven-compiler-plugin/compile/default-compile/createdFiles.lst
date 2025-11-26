@@ -1,0 +1,6 @@
+com\volkova\kandalov\entity\Course.class
+com\volkova\kandalov\service\CourseService.class
+com\volkova\kandalov\controller\CourseServlet.class
+com\volkova\kandalov\entity\Student.class
+com\volkova\kandalov\controller\StudentServlet.class
+com\volkova\kandalov\service\StudentService.class
