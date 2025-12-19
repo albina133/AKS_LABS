@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Студенты</title>
+</head>
+<body>
+<h1>Список студентов</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Email</th>
+        <th>Возраст</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="s : ${students}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.fullName}"></td>
+        <td th:text="${s.email}"></td>
+        <td th:text="${s.age}"></td>
+        <td>
+            <a th:href="@{'/students/edit/' + ${s.id}}">Редактировать</a>
+            |
+            <a th:href="@{'/students/delete/' + ${s.id}}"
+               onclick="return confirm('Удалить студента?');">Удалить</a>
+        </td>
+    </tr>
+</table>
+
+<h2>Добавить студента</h2>
+<form th:action="@{/students}" th:object="${student}" method="post">
+    <input type="text" th:field="*{fullName}" placeholder="ФИО" required><br>
+    <input type="email" th:field="*{email}" placeholder="Email"><br>
+    <input type="number" th:field="*{age}" placeholder="Возраст"><br>
+    <button type="submit">Добавить</button>
+</form>
+
+<p>
+    <a th:href="@{/courses}">Перейти к курсам</a>
+</p>
+
+</body>
+</html>
