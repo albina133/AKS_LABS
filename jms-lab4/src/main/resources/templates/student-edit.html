@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование студента</title>
+</head>
+<body>
+
+<h1>Редактирование студента</h1>
+
+<form th:action="@{/students/update}" th:object="${student}" method="post">
+    <!-- скрытое поле id -->
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>ФИО:</label><br>
+    <input type="text" th:field="*{fullName}" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" th:field="*{email}"><br>
+
+    <label>Возраст:</label><br>
+    <input type="number" th:field="*{age}"><br><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<p>
+    <a th:href="@{/students}">Вернуться к списку студентов</a>
+</p>
+
+</body>
+</html>

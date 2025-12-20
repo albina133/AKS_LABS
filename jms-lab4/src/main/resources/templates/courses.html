@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсы</title>
+</head>
+<body>
+
+<h1>Список курсов</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>ID студента</th>
+        <th>Студент</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="c : ${courses}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.title}"></td>
+        <td th:text="${c.description}"></td>
+        <td th:text="${c.student != null ? c.student.id : ''}"></td>
+        <td th:text="${c.student != null ? c.student.fullName : ''}"></td>
+        <td>
+            <a th:href="@{'/courses/delete/' + ${c.id}}"
+               onclick="return confirm('Удалить курс?');">Удалить</a>
+        </td>
+    </tr>
+</table>
+
+<h2>Добавить курс</h2>
+<form th:action="@{/courses}" method="post">
+    <input type="text" name="title" placeholder="Название курса" required><br>
+    <input type="text" name="description" placeholder="Описание"><br>
+    <input type="number" name="studentId" placeholder="ID студента (необязательно)"><br>
+    <button type="submit">Добавить</button>
+</form>
+
+<p>
+    <a th:href="@{/students}">← К списку студентов</a>
+</p>
+
+</body>
+</html>
