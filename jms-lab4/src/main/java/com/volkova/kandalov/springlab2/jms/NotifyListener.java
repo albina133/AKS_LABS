@@ -17,10 +17,10 @@ public class NotifyListener {
         this.emailService = emailService;
     }
 
-    @JmsListener(destination = "${app.jms.notify-queue}", containerFactory = "queueListenerFactory")
+    @JmsListener(destination = "${app.jms.topic}", containerFactory = "topicListenerFactory")
     public void onMessage(String messageJson) throws Exception {
 
-        System.out.println("NOTIFY LISTENER GOT MESSAGE: " + messageJson);
+        System.out.println("[NOTIFY] received: " + messageJson);
 
         JsonNode root = objectMapper.readTree(messageJson);
 

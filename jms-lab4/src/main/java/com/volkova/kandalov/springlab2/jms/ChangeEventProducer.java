@@ -22,6 +22,8 @@ public class ChangeEventProducer {
     }
 
     public void send(ChangeEvent event) {
+        System.out.println("[PRODUCER] send to topic=" + topic + " event=" + event);
+
         jmsTemplate.send(topic, session -> {
             String json;
             try {
