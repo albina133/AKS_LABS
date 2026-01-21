@@ -185,3 +185,17 @@ XSL-файлы для преобразования XML-ответов REST API �
 <img width="854" height="434" alt="image" src="https://github.com/user-attachments/assets/775f1f75-8aae-4d17-8a7d-ee7b05764f5e" /> <br>
 Все компоненты системы работают совместно. При изменении сущностей отправляется JMS-сообщение, оно обрабатывается несколькими listener'ами, выполняется журналирование в базе данных и формирование уведомлений. Приложение корректно функционирует в асинхронном режиме. <br>
 <img width="1919" height="1038" alt="image" src="https://github.com/user-attachments/assets/07bc4f98-2f63-4eaf-9165-97224e05267d" /> <br>
+
+## Правки к практической работе №4 <br>
+Сообщения об изменениях публикуются в topic ${app.jms.topic}. Producer использует JmsTemplate с pubSubDomain=true. Оба обработчика (AuditLogListener, NotifyListener) подписаны на тот же topic через topicListenerFactory с pubSubDomain=true, поэтому одно событие доставляется обоим компонентам. AuditLogListener сохраняет данные в таблицу audit_log, NotifyListener при выполнении условия (удаление студента) формирует и отправляет уведомление. <br>
+Скрины, отражающие изменения и их работоспособность: <br>
+<img width="940" height="446" alt="image" src="https://github.com/user-attachments/assets/542d03a7-c122-4772-9e8f-344b7d838e15" /> <br>
+<img width="930" height="533" alt="image" src="https://github.com/user-attachments/assets/25eac1a9-bfc5-401d-8e53-fec6ad8e2720" /> <br>
+<img width="830" height="458" alt="image" src="https://github.com/user-attachments/assets/b49f9534-9ca1-4a64-a93f-05914ee432f7" /> <br>
+<img width="1280" height="665" alt="image" src="https://github.com/user-attachments/assets/8a357c23-1854-4770-b6ca-b0ddf4015e6e" /> <br>
+<img width="897" height="851" alt="image" src="https://github.com/user-attachments/assets/450b8ece-b1e1-40f7-81aa-3845bc9cc83f" /> <br>
+<img width="810" height="443" alt="image" src="https://github.com/user-attachments/assets/d3201f96-ca8e-4e61-9958-f32f5c607a14" /> <br>
+<img width="939" height="157" alt="image" src="https://github.com/user-attachments/assets/c628b04b-d5ba-40fa-8888-232684bf6d48" /> <br>
+<img width="929" height="203" alt="image" src="https://github.com/user-attachments/assets/0846a75f-572c-44ac-8dde-d8f1237e281d" /> <br>
+<img width="934" height="432" alt="image" src="https://github.com/user-attachments/assets/f0f37c9a-f671-4b9b-92ec-fa8ee68e22df" /> <br>
+<img width="1280" height="380" alt="image" src="https://github.com/user-attachments/assets/d5a9a1e3-40ea-469f-bbf1-8634249eb765" /> <br>
